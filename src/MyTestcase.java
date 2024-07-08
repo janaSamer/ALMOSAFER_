@@ -1,66 +1,80 @@
-import java.time.Duration;
-
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
-import dev.failsafe.internal.util.Assert;
+public class MyTestcase extends TestData {
 
-public class MyTestcase {
-	
-	WebDriver  driver =new ChromeDriver() ;
-	String url="https://global.almosafer.com/en"; 
-	String ExpectedLanguage="en";
-	String ExpectedCurrency="SAR";
-	String ExpectedContactNumber="+966554400000";
-	boolean QitafLogoIsThere=true;
+	MainPageTestCases TC = new MainPageTestCases();
+	HotelPageTestCases HTC = new HotelPageTestCases();
+
 	@BeforeTest
 	public void setUp() {
-		
-		driver.get(url);
-		driver.manage().window().minimize();
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(8));				
-	    driver.findElement(By.cssSelector(".sc-jTzLTM.hQpNle.cta__button.cta__saudi.btn.btn-primary")).click();
+
+		TheDeafultConfiguration();
+
 	}
-	
-	//test if the lang is en 
-	@Test
-	public void  checkThelang() {
-		WebElement lang= driver.findElement(By.tagName("html"));
-		String ActualLanguageOnWebsiteVlaue=lang.getAttribute("lang");
-	    org.testng.Assert.assertEquals(ActualLanguageOnWebsiteVlaue,ExpectedLanguage);
-	
+
+	@Test(description = "MainPageTest", priority = 1)
+	public void checkThelanguage() {
+
+		TC.CheckTheLanguageTest();
 	}
-	@Test
+
+	@Test(description = "MainPageTest", priority = 2)
 	public void checkThecurrencyIsSAR() {
-		
-		String TheActualCurrency =driver.findElement(By.xpath("//button[@data-testid='Header__CurrencySelector']")).getText();
-		org.testng.Assert.assertEquals(TheActualCurrency ,ExpectedCurrency);
-		
-		
+
+		TC.CheckTheCurrencyTest();
 	}
-	@Test
+
+	@Test(description = "MainPageTest", priority = 3)
 	public void checkContactNumberIsCorrect() {
-		String TheActualContactNumber= driver.findElement(By.tagName("strong")).getText();
-	    org.testng.Assert.assertEquals(TheActualContactNumber,ExpectedContactNumber);
-		
-	
+
+		TC.CheckContactNumberTest();
+
 	}
-	
-	@Test
+
+	@Test(description = "MainPageTest", priority = 4)
 	public void ckeckIfQitafLogoIsExist() {
-		
-       boolean  ActualQitafLogo= driver.findElement(By.xpath("//svg[@data-testid='Footer__QitafLogo']")).isDisplayed();
-       org.testng.Assert.assertEquals( ActualQitafLogo,QitafLogoIsThere);
-		
+
+		TC.ckeckIfQitafLogoIsExistTest();
+
 	}
-	
-	
-	
-	
-	
-	
+
+	@Test(description = "MainPageTest", priority = 5)
+	public void checkIfHotelTabIsNotSelected() {
+
+		TC.checkIfHotelTabIsNotSelectedTest();
+	}
+
+	@Test(description = "MainPageTest", priority = 6)
+	public void changeTheLanguageOfWebsiteRandomly() {
+
+		TC.changeTheLanguageOfWebsiteRandomlyTest();
+	}
+
+	@Test(description = "HotelPageTest", priority = 7)
+	public void hotelSelection() {
+
+		HTC.hotelSelectionTest();
+
+	}
+
+	@Test(description = "description=HotelPageTest", priority = 8)
+	public void selectNumberOfPeopleRandomly() {
+
+		HTC.selectNumberOfPeopleRandomlyTest();
+	}
+
+	@Test(description = "description=HotelPageTest", priority = 9)
+	public void checkThePageIsFullyLoaded() {
+
+		HTC.checkThePageIsFullyLoadedTest();
+	}
+
+	@Test(description = "description=HotelPageTest", priority = 10)
+	public void checkIfItemsSortedFromLowestToHighest() {
+
+		HTC.checkIfItemsSortedFromLowestToHighestTest();
+
+	}
+
 }

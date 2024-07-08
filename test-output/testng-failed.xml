@@ -6,6 +6,15 @@
       <class name="MyTestcase">
         <methods>
           <include name="setUp"/>
+          <include name="checkIfHotelTabIsNotSelected"/>
+          <include name="checkThePageIsFullyLoaded"/>
+          <include name="checkThelanguage"/>
+          <include name="selectNumberOfPeopleRandomly"/>
+          <include name="changeTheLanguageOfWebsiteRandomly"/>
+          <include name="hotelSelection"/>
+          <include name="checkThecurrencyIsSAR"/>
+          <include name="checkContactNumberIsCorrect"/>
+          <include name="checkIfItemsSortedFromLowestToHighest"/>
           <include name="ckeckIfQitafLogoIsExist"/>
         </methods>
       </class> <!-- MyTestcase -->
